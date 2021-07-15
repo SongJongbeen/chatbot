@@ -6,7 +6,7 @@ date_file = 'date.csv'
 food_file = 'food.csv'
 sent_file = '주문조합.csv'
 
-komoran = Komoran(userdic='../../utils/user_dic.tsv')
+komoran = Komoran(userdic='user_dic.tsv')
 
 file = open("corpus.txt", 'w')
 

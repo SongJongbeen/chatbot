@@ -11,14 +11,14 @@ from FindAnswer import FindAnswer
 
 
 # 전처리 객체 생성
-p = Preprocess(word2index_dic='train_tools/dict/chatbot_dict.bin',
-               userdic='utils/user_dic.tsv')
+p = Preprocess(word2index_dic='chatbot_dict.bin',
+               userdic='user_dic.tsv')
 
 # 의도 파악 모델
-intent = IntentModel(model_name='models/intent/intent_model.h5', proprocess=p)
+intent = IntentModel(model_name='intent_model.h5', proprocess=p)
 
 # 개체명 인식 모델
-ner = NerModel(model_name='models/ner/ner_model.h5', proprocess=p)
+ner = NerModel(model_name='ner_model.h5', proprocess=p)
 
 
 def to_client(conn, addr, params):
