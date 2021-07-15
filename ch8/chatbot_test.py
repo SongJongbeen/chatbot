@@ -8,15 +8,15 @@ p = Preprocess(word2index_dic='chatbot_dict.bin',
 
 # 질문/답변 학습 디비 연결 객체 생성
 db = Database(
-    host=DB_HOST, user=DB_USER, password=DB_PASSWORD, db_name=DB_NAME
+    host='127.0.0.1', user='root', password='1041489LM', db_name='homestead'
 )
 db.connect()    # 디비 연결
 
 # 원문
-# query = "오전에 탕수육 10개 주문합니다"
+query = "오전에 탕수육 10개 주문합니다"
 # query = "화자의 질문 의도를 파악합니다."
 # query = "안녕하세요"
-query = "자장면 주문할게요"
+# query = "자장면 주문할게요"
 
 # 의도 파악
 from IntentModel import IntentModel
