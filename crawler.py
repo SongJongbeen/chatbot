@@ -27,9 +27,9 @@ elem.click()
 
 # 아이디, 비밀번호 입력
 id = driver.find_element_by_name('userid')
-id.send_keys('haenarang') # 자신의 아이디 입력
+id.send_keys('haenarang')  # 자신의 아이디 입력
 id = driver.find_element_by_name('password')
-id.send_keys('andrews701') # 자신의 비밀번호 입력
+id.send_keys('andrews701')  # 자신의 비밀번호 입력
 id.send_keys(Keys.RETURN)
 
 # 페이지가 로드되기 전 크롤러가 먼저 클릭하는 현상 방지
@@ -41,6 +41,7 @@ menu.click()
 jogyo = driver.find_element_by_link_text("에타조교")
 jogyo.click()
 
+
 class Crawler:
     def __init__(self, num):
         self.__count = 1
@@ -48,68 +49,70 @@ class Crawler:
         self.__num = num
         self.__content, self.__comment = [], []
         self._ar_per_page = 0
-        
+
     def com_crawl(self):
         for page in range(1, 21):  # 20개의 페이지씩
             time.sleep(1)
-            
+
             # 첫 페이지 설정 (20개씩 나눠서 진행할 때 11, 21, ..등의 페이지부터 시작할 수 있도록)
             if self._ar_per_page == 0:
                 driver.get(f'https://everytime.kr/382452/p/{page}')
                 time.sleep(1)
-                
+
             # 20개의 글 크롤링 했으면 다음 클릭
             if self._ar_per_page == 20:
                 daum = driver.find_element_by_link_text("다음")
                 daum.click()
-            
+
             # 초기화
             self._ar_per_page = 0
-            
+
             for count in range(1, 21):  # 한 페이지당 20개의 글
                 try:  # 접근이 안되는 게시글 오류로 인한 실행종료 방지
                     time.sleep(0.5)
-                    
+
                     # 게시글 클릭
                     article = driver.find_element_by_xpath('//*[@id="container"]/div[2]/article[1]/a/p')
                     article.click()
                     time.sleep(1)
-                    
+
                     # 게시글의 내용 크롤링
                     content = driver.find_element_by_xpath('//*[@id="container"]/div[2]/article/a/p').text
-                    
+
                     # 게시글의 댓글 크롤링
                     comment_list = []
                     comment_count = 1
-                    
+
                     while True:
                         try:
-                            comment = driver.find_element_by_css_selector(f'#container > div.wrap.articles > article > div > article:nth-child({comment_count}) > p')
+                            comment = driver.find_element_by_css_selector(
+                                f'#container > div.wrap.articles > article > div > article:nth-child({comment_count}) > p')
                             comment_list.append(comment.text)
-                            #print(comment_list)
+                            # print(comment_list)
                             comment_count += 1
                         except:
                             break
-                        
+
                     # '삭제된 댓글입니다.' 제외
                     comment_list = [i for i in comment_list if i != "삭제된 댓글입니다."]
-                    
+
                     self._content.append(content)
                     self.comment.append(comment_list)
-                    
+
                     driver.back()
-                    
+
                     self._ar_per_page += 1
-                    
+
                 except:
                     self._ar_per_page += 1
                     continue
-                
+
             print("크롤링 완료")
             driver.quit()
-            
+
             return self._content, self._comment
-        
+
+
 c = Crawler(10)  # 일단 한 번 10개까지 결과물을 뽑아보고자 하는 코드
 result = c.com_crawl()
 print(result)
