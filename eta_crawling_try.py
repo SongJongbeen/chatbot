@@ -27,9 +27,9 @@ elem.click()
 
 # 아이디, 비밀번호 입력
 id = driver.find_element_by_name('userid')
-id.send_keys('haenarang') # 자신의 아이디 입력
+id.send_keys('자신의 아이디') # 자신의 아이디 입력
 id = driver.find_element_by_name('password')
-id.send_keys('andrews701') # 자신의 비밀번호 입력
+id.send_keys('자신의 비밀번호') # 자신의 비밀번호 입력
 id.send_keys(Keys.RETURN)
 
 # 페이지가 로드되기 전 크롤러가 먼저 클릭하는 현상 방지
