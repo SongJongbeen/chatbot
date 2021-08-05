@@ -7,8 +7,8 @@ driver.implicitly_wait(1)
 # go to the login page & login
 
 driver.get("https://everytime.kr/login")
-driver.find_element_by_name("userid").send_keys("thdwhdqls")
-driver.find_element_by_name("password").send_keys("1041489LM")
+driver.find_element_by_name("userid").send_keys("########id")
+driver.find_element_by_name("password").send_keys("#########pw")
 driver.find_element_by_xpath('//*[@class="submit"]/input').click()
 driver.implicitly_wait(1)
 
@@ -17,11 +17,12 @@ comment_results = []  # 댓글
 main_urls = []
 comment_urls = []
 cnt = 0
+# 전체 204
 
 while True:
     print("Page " + str(cnt))
 
-    if cnt > 1:  # 163페이지까지가 2019년도 게시글
+    if cnt > 50:  # 163페이지까지가 2019년도 게시글
         break
     cnt = cnt + 1
 
