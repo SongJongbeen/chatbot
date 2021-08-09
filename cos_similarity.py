@@ -46,7 +46,7 @@ for row in range_cell:
         link.append(cell.value)
 
 
-range_cell = load_sheet['C1:C12718']
+range_cell = load_sheet['C1:C14766']
 given_sentence = input('질문을 입력하세요: ')
 bow2 = kkma.nouns(given_sentence)
 
@@ -85,14 +85,3 @@ for k, v in idx_link.items():
         print(link[k])
 
 print('time: ', time.time() - start)
-
-for row in range_cell:
-    for cell in row:
-        sentence = cell.value
-        bow = komoran.nouns(sentence)
-        for i in bow:
-            bows.append(i)
-for token in bow:
-    if token not in word_dics:
-        # if token not in stop_word_list
-        word_dics.append(token)
