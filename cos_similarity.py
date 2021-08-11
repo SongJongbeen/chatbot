@@ -7,11 +7,9 @@ import time
 
 # 각 함수들은 수학적인 내용이라 나도 잘 모름..ㅎㅎ...
 
-# 코사인 유사도 계산 방법으로 벡터 거리를 계산
 def cos_sim(vec1, vec2):
     return dot(vec1, vec2) / (norm(vec1) * norm(vec2))
 
-# 단어의 빈도수와 벡터 상의 밀집도 계산
 def make_term_doc_mat(sentence_bow, word_dics):
     freq_mat = {}
 
@@ -24,7 +22,6 @@ def make_term_doc_mat(sentence_bow, word_dics):
 
     return freq_mat
 
-# 각 단어들을 벡터 공간에 위치시킴
 def make_vector(tdm):
     vec = []
     for key in tdm:
@@ -115,4 +112,9 @@ print('time: ', time.time() - start)
 나눠진 명사들을 벡터 공간에 위치시킴.
 주어진 문장 또한 명사 단위로 나누고, 벡터 공간에 위치시킴.
 각 명사들의 벡터 공간 상의 거리를 코사인을 활용해 구함.
+bow: https://wikidocs.net/22650
+make term doc: https://wikidocs.net/24559
+cosine similarity: https://wikidocs.net/24603
 '''
+
+
