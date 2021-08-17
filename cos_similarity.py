@@ -49,7 +49,7 @@ load_sheet = load_xlsx['eta_assistant']
 # A열: 원본 텍스트 / B열: A열 데이터의 출처링크 / C열: A열 데이터의 파싱된 값
 
 # B열에 있는 각 글들의 링크들을 link에 저장함 (이 부분 따로 떼어내서 실행시간 줄여도 좋을듯?)
-range_cell = load_sheet['B1:B12718']
+range_cell = load_sheet['B1:B14766']
 
 for row in range_cell:
     for cell in row:
